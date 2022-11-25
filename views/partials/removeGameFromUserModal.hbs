@@ -1,0 +1,26 @@
+<div id="removeGameModal-{{game.id}}" class="modal fade" role="dialog">
+    <div class="modal-dialog purple-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete.</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you would like to remove the game {{game.name}} from your account?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-primary modal-close"
+                    data-bs-dismiss="modal">Close</button>
+                <form action="/users/games/remove" method="post">
+                    <button name="removeGameID" value="{{game.id}}" type="submit"
+                        class="btn btn-default btn-danger modal-delete delete-confirm"
+                        id="deleteModal-{{game.id}}">Remove</button>
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

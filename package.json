@@ -1,0 +1,46 @@
+{
+  "name": "ggtracker",
+  "version": "1.0.0",
+  "description": "Video game tracker for web",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --verbose --runInBand ./tests",
+    "start": "node server.js"
+  },
+  "author": "GGTracker team",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.18.0",
+    "express-handlebars": "^6.0.5",
+    "express-list-routes": "^1.1.3",
+    "jest-cli": "^28.1.0",
+    "logger": "^0.0.1",
+    "mysql2": "^2.3.3",
+    "pino": "^7.11.0",
+    "pino-http": "^6.6.0",
+    "supertest": "^6.2.3",
+    "uuid": "^8.3.2",
+    "uuidv4": "^6.2.13",
+    "validator": "^13.7.0"
+  },
+  "jest": {
+    "testTimeout": 15000
+  },
+  "devDependencies": {
+    "jest": "^28.1.0"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reaxt/GGTracker.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Reaxt/GGTracker/issues"
+  },
+  "homepage": "https://github.com/Reaxt/GGTracker#readme"
+}

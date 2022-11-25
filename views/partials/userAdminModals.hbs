@@ -1,0 +1,50 @@
+<!--  DELETE MODAL -->
+<div id="delete-{{Username}}" class="modal fade" role="dialog">
+    <div class="modal-dialog delete-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Ban.</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you would like to ban {{Username}}?<br /><br /><strong>This action is not
+                        reversible.</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-primary modal-close"
+                    data-bs-dismiss="modal">Close</button>
+                <form action="/users/delete" method="POST">
+                    <button name="name" value="{{Username}}" type="submit"
+                        class="btn btn-default btn-danger modal-delete delete-confirm"
+                        id="deleteModal-{{Username}}">Ban</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PROMOTE MODAL -->
+<div id="promote-{{Username}}" class="modal fade" role="dialog">
+    <div class="modal-dialog delete-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{#if IsAdmin}}Demote{{else}}Promote{{/if}}.</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you would like to {{#if IsAdmin}}demote{{else}}promote{{/if}} {{Username}}?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-primary modal-close"
+                    data-bs-dismiss="modal">Close</button>
+                <form action="/users/{{#if IsAdmin}}demote{{else}}promote{{/if}}" method="POST">
+                    <button name="name" value="{{Username}}" type="submit"
+                        class="btn btn-default btn-danger modal-delete delete-confirm"
+                        id="deleteModal-{{Username}}">{{#if IsAdmin}}Demote{{else}}Promote{{/if}}</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+<!-- add/remove form user modals -->
+{{#each games}}
+{{#if this.canAddGame}}
+{{> gameToUserModal game=this}}
+{{else}}
+{{> removeGameFromUserModal game=this}}
+{{/if}}
+{{/each}}
+<!--  DELETE MODAL -->
+{{#each games}}
+<div id="delete-{{this.id}}" class="modal fade" role="dialog">
+    <div class="modal-dialog delete-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Delete.</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you would like to delete {{this.name}}.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-primary modal-close"
+                    data-bs-dismiss="modal">Close</button>
+                <form action="/games/delete" method="post">
+                    <button name="id" value="{{this.id}}" type="submit"
+                        class="btn btn-default btn-danger modal-delete delete-confirm"
+                        id="deleteModal-{{this.id}}">Delete</button>
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{{/each}}
+<!--  EDIT MODAL -->
+
+{{#each games}}
+<div id="edit-{{this.id}}" class="modal fade" role="dialog">
+    <div class="modal-dialog edit-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit.</h4>
+            </div>
+            <form id="edit-{{this.id}}-form" action="/games/update" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Game name</label>
+                        <input type="text" name="name" class="form-control" id="game-edit-name-{{this.id}}"
+                            value="{{this.name}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="genre" class="form-label">Game genre</label>
+                        <select class="form-select" form="edit-{{this.id}}-form" id="genre-edit-{{this.id}}"
+                            name="genre" aria-label="Genre selection">
+                            {{#each ../genres}}
+                            <option value="{{this.id}}" {{#ifEquals ../this.genre.id this.id}}selected{{/ifEquals}}>
+                                {{this.genre}} </option>
+                            {{/each}}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-primary modal-close"
+                        data-bs-dismiss="modal">Close</button>
+                    <button name="id" value="{{this.id}}" type="submit" id="edit-submit-{{this.id}}"
+                        class="btn btn-primary edit-submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{/each}}
+
+<!--  ADD MODAL -->
+<div id="addGameModal" class="modal fade" role="dialog">
+    <div class="modal-dialog add-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add new game.</h4>
+            </div>
+            <form id="addGameForm" action="/games/add" method="post">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Game name</label>
+                        <input type="text" name="name" class="form-control" id="game-add-name" placeholder="Game name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Game description</label>
+                        <textarea name="description" class="form-control" id="game-add-description"
+                            placeholder="Game desc"> </textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-primary modal-close"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="add-game-submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

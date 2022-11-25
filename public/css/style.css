@@ -1,0 +1,529 @@
+:root {
+  --french-violet: #7a28cbff;
+  --select-button: rgb(128, 0, 255);
+
+  --lava: #cb1a23ff;
+  --lava-hover: rgb(136, 17, 23);
+  --lava-bright: rgb(232, 74, 82);
+  --black: #000000ff;
+  --davys-grey: #494949ff;
+  --light-grey: rgb(139, 138, 138);
+  --ghost-white: rgb(231, 231, 231);
+
+  /*Light mode colors*/
+
+}
+
+@font-face {
+  font-family: tokyoFont;
+  src: url(../fonts/drift.ttf);
+}
+
+.navbar-dark {
+  background-color: var(--black);
+}
+.navbar-brand {
+  margin: 0px 30px 0px 20px;
+}
+.nav-item {
+  align-items: stretch;
+  font-family: tokyoFont;
+  border-radius: 1px;
+  border-left: 5px solid var(--lava);
+  transition: 0.3s;
+  font-size: 2rem;
+}
+.nav-item a {
+  padding: 23px 40px 23px 25px;
+  margin: 0px 40px 0px 25px;
+  color: var(--ghost-white);
+}
+.nav-link {
+  color: var(--ghost-white) !important;
+}
+.alink {
+  color: var(--ghost-white);
+}
+li:last-child {
+  border-right: 5px solid var(--lava); /* This will not give border to last li element */
+}
+.nav-item:hover {
+  background-color: var(--lava);
+  color: var(--black);
+}
+.nav-item.active {
+  background-color: var(--lava);
+  color: var(--black);
+}
+.navbar-nav {
+  align-items: stretch;
+}
+.headerUser {
+  background-color: var(--light-grey);
+  display:flex;
+  width: fit-content;
+  border-radius: 20px;
+  padding: 10px;
+  
+}
+#headerUserInfoContainer {
+  margin-top: 20px;
+}
+.linkContainer a{
+  margin: 0px 10px;
+}
+.headerUser img {
+border-radius: 80px;
+height: 80px;
+width: 80px;
+}
+
+
+body {
+  background-color: var(--davys-grey);
+}
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  padding: 20px 0px;
+   /* Vertically center the text there */
+  background-color: var(--black);
+  color: var(--davys-grey);
+}
+
+.footer p {
+  margin-bottom: 0;
+}
+.game-card {
+  background-color: var(--ghost-white);
+  padding: 10px;
+  margin: 20px;
+  width: 300px;
+  height: fit-content;
+  text-align: center;
+  font-size: 1.5rem;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+.card-text {
+  font-size: 1rem;
+}
+.game-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--french-violet);
+  box-shadow: 0px 0px 40px 1px var(--french-violet);
+}
+
+#search {
+  display: flex;
+  justify-content: center;
+
+
+}
+#search-container {
+  width: 60%;
+  background-color: var(--light-grey);
+  margin: 10px 0px;
+  padding: 30px;
+  border-radius: 5px;
+}
+.searchbarButton {
+  color: var(--ghost-white) !important;
+  background-color: var(--davys-grey);
+  border-color: var(--davys-grey) !important;
+
+}
+.searchbarButton:hover {
+  background-color: var(--french-violet);
+}
+
+.delete-dialog {
+  border-color: var(--lava) !important;
+  box-shadow: 0px 0px 40px 1px var(--lava) !important;
+}
+.edit-dialog {
+  border-color: var(--french-violet) !important;
+  box-shadow: 0px 0px 40px 1px var(--french-violet) !important;
+}
+.purple-dialog {
+  border-color: var(--french-violet) !important;
+  box-shadow: 0px 0px 40px 1px var(--french-violet) !important;
+}
+.red-dialog {
+  border-color: var(--lava) !important;
+  box-shadow: 0px 0px 40px 1px var(--lava) !important;
+}
+#error-container div {
+padding: 30px 12px;
+}
+.cardsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto;
+}
+.card {
+  background-color: var(--ghost-white) !important;
+
+}
+#addButton {
+  margin: 0px auto;
+  width: 100%;
+  color: var(--ghost-white);
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  margin: 0px auto;
+  padding: 10px 0px;
+}
+.buttonContainer button {
+  color: var(--ghost-white) !important;
+  background-color: var(--davys-grey);
+  border-color: var(--davys-grey) !important;
+}
+.buttonContainer button:hover {
+  background-color: var(--select-button);
+  border-color: var(--select-button);
+}
+
+.modal-dialog div div{
+  background-color: var(--davys-grey) !important;
+  color: var(--ghost-white);
+  border-color: var(--light-grey) !important;
+}
+.modal-close {
+  color: var(--ghost-white) !important;
+  background-color: var(--lava);
+  border-color: var(--lava) !important;
+}
+.modal-close:hover {
+  background-color: var(--lava-hover);
+  border-color: var(--lava-hover) !important;
+}
+.btn-main {
+  color: var(--ghost-white) !important;
+  background-color: var(--lava);
+  border-color: var(--lava) !important;
+}
+.btn-main:hover {
+  background-color: var(--lava-hover);
+  border-color: var(--lava-hover) !important;
+}
+
+.edit-submit {
+  color: var(--ghost-white) !important;
+  background-color: var(--lava);
+  border-color: var(--lava) !important;
+}
+.edit-submit:hover {
+  background-color: var(--lava-hover);
+  border-color: var(--lava-hover) !important;
+}
+
+.modal-edit {
+  font-size: 1.2rem;
+  
+  color: var(--ghost-white) !important;
+  background-color: var(--lava);
+  border-color: var(--lava) !important;
+  margin-right: 10px;
+}
+.modal-edit:hover {
+  background-color: var(--lava-hover) !important;
+  border-color: var(--lava-hover) !important;
+}
+.modal-delete:hover {
+  background-color: var(--lava-hover) !important;
+  border-color: var(--lava-hover) !important;
+}
+.modal-delete {
+  margin-left: 10px;
+  font-size: 1.2rem;
+  background-color: var(--lava);
+  border-color: var(--lava) !important;
+}
+.genres .modal-edit {
+  border-radius: 0;
+}
+.genres .modal-delete {
+  border-radius: 0px !important;
+}
+.card-buttons {
+  display: flex;
+  justify-content: space-between !important;
+}
+
+/*  single games screen */
+.chip {
+  display: inline-block;
+  padding: 0 25px;
+  height: 50px;
+  font-size: 18px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: var(--black);
+  color: var(--ghost-white);
+  transition: 0.2s;
+  text-decoration: none;
+  /*border-color: var(--lava);
+  box-shadow: 0px 0px 10px 1px var(--lava);
+  */
+  
+  margin: 10px
+
+}
+.chip:hover {
+  transform: translateY(-5px);
+  border-color: var(--french-violet);
+  box-shadow: 0px 0px 40px 1px var(--french-violet);
+  cursor: pointer;
+  color: var(--ghost-white)
+}
+.chip a {
+  text-decoration: none;
+  color: var(--ghost-white)
+}
+
+.closebtn {
+  background-color: var(--lava);
+  border-color: var(--lava) ;
+  color: var(--ghost-white) ;
+  border-radius: 100%;
+  font-size: 18px ;
+  line-height: 10px ;
+  padding: 10px ;
+  margin: 0px 0px 2px 7px ;
+}
+.closebtn:hover {
+  background-color: var(--lava-hover) !important;
+  border-color: var(--lava-hover) !important;
+  color: var(--ghost-white) !important;
+}
+#noReccContainer {
+  background-color: var(--ghost-white);
+  margin: 10px;
+  overflow: hidden;
+  display:flex;
+  align-items: center;
+  height: 250px;
+  padding: 40px;
+  border-radius: 20px;
+}
+#singleGameContainer {
+  background-color: var(--ghost-white);
+  margin: 10px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+#singleGameContainer #gameHeader {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--light-grey);
+  padding: 50px 5px;
+  border: 10px;
+}
+#singleGameContainer #gameFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  border-top: 3px solid var(--light-grey);
+  padding: 20px;
+}
+
+#singleGameContainer #gameBody {
+  
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  height: 70%;
+    padding: 3px 20px;
+    margin: 0px 20px;
+
+}
+#gameDescription {
+  height: 250px;
+  border-right: 2px solid var(--light-grey);
+}
+#gameFooter #leftFooter  {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  overflow: hidden;
+}
+#gameFooter #rightFooter  {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  justify-content: space-evenly;
+
+}
+.footerElm {
+  margin: 0px 10px;
+}
+#gameTitle {
+  border-bottom: 2px solid var(--light-grey);
+}
+#adminFooter{
+  display: flex;
+  border-radius: 20px;
+  border: 1px solid var(--lava) !important;
+  background-color: solid var(--light-grey) !important;
+}
+#userFooter{
+  display: flex;
+
+  border-radius: 20px;
+  border: 1px solid var(--light-grey) !important;
+
+}
+.footerLegend {
+  font-size: 1.2rem;
+}
+legend{ float: none; padding: inherit; }
+
+.login-btn {
+  background-color: var(--lava-bright);
+  border-color: var(--lava-bright) !important;
+  color: var(--ghost-white) !important;
+  margin:0 auto;
+  display:block;
+}
+
+.user-card {
+  background-color: var(--light-grey) !important;
+}
+
+
+.homeContainer {
+  display:grid;
+  background-color: var(--light-grey);
+  border-radius: 10px;
+  margin: 20px;
+  padding: 20px;
+}
+.homeContainer h1 {
+  color: var(--ghost-white);
+}
+
+#homeContent {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  padding: 20px
+}
+#SavedGamesList {
+  display: flex;
+  flex-direction: column;
+
+  padding: 5px;
+  margin: 10px;
+  border-radius: 10px;
+  height: 500px;
+  overflow-y: scroll;
+  background-color: var(--ghost-white);
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+#SavedGamesList::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+  }
+
+#ReccContain{
+  display: flex;
+  align-items: center;
+  padding: 60px;
+}
+
+
+/* Landing page */
+
+#Landing{ 
+  width: 90%;
+  margin-left:5%;
+}
+#Hero {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--black);
+  padding: 150px 0px;
+  background-position: center;
+  background-size: cover;
+  background-image: url("../img/splashPlaying.png");
+
+}
+
+#HeroText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  color: var(--ghost-white);
+}
+
+#mainLanding {
+  background-color: var(--light-grey);
+  padding: 0px 14%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  
+}
+#mainLanding h1 {
+  color: var(--ghost-white);
+}
+#mainLanding p {
+  font-size: 1.5rem;
+}
+#mainLanding .textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  width:70%;
+}
+#mainLanding h2 {
+  margin-left: 70%
+}
+#mainLanding #cards {
+  display: flex;
+  background-color: var(--davys-grey);
+  border-radius: 5px;
+  margin:10px;
+  padding: 10px;
+}
+#cards .card {
+  margin: 20px;
+
+}
+#aboutContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 20px;
+  
+}
+#aboutContent {
+  padding: 20px;
+  width: 70%;
+  background-color: var(--light-grey);
+}
+
+.theme{
+  margin-right: 1em;
+}

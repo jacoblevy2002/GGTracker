@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Game tracker</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{#if partials.lightTheme}}/css/styleLight.css{{else}}/css/style.css{{/if}}">
+    <link rel="icon" href="{{#if partials.lightTheme}}/img/logo.png{{else}}/img/logo.png{{/if}}">
+
+</head>
+<body>
+    {{>header}}
+    {{{body}}}
+    {{>footer}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"> </script> 
+</body>
+</html>

@@ -1,0 +1,79 @@
+<div id="loginModal" {{#if modal}}class="modal fade" role="dialog">
+    <div class="modal-dialog"> 
+        <div class="modal-content"> <div class="modal-header">
+            <h4 class="modal-title">You must be logged in to do that!</h4>
+            <button type="button" class="close" data-bs-dismiss="modal">&times;</button></div{{/if}}>
+        <div id="container-fluid">
+            <div class="row row-no-gutters">
+                <div class="card col-6">
+                    <div style="margin: auto">
+                        <div class="card-body body-background text-left">
+                            <h2 class="card-title text-center">Sign Up:</h2>
+                            <form action="/signup" method="POST">
+                                <label for="name">Username</label>
+                                <div style="padding-bottom: 10px;">
+                                    <input type="text" name="name" id="name" maxlength="20" value="{{nStartingValue}}"
+                                        required>
+                                </div>
+                                <label for="email">Email</label>
+                                <div style="padding-bottom: 10px;">
+                                    <input type="text" name="email" id="email" maxlength="50" value="{{eStartingValue}}"
+                                        required>
+                                </div style="padding-bottom: 10px;">
+                                <label for="bio">Bio</label>
+                                <div style="padding-bottom: 10px;">
+                                    <textarea name="bio" id="bio" maxlength="100" value="{{bStartingValue}}" cols="25"
+                                        rows="4"></textarea>
+                                </div>
+                                <label for="password">Password</label>
+                                <div style="padding-bottom: 10px;">
+                                    <input type="password" name="password" minlength="8" id="password" required>
+                                </div>
+                                <label for="repassword">Re-Enter Password</label>
+                                <div style="padding-bottom: 10px;">
+                                    <input type="password" name="repassword" minlength="8" id="repassword"
+                                        oninput="checkPass(this)" required>
+                                    <script language='javascript' type='text/javascript'>
+                                        // pulled from https://stackoverflow.com/a/18893556
+                                        function checkPass(input) {
+                                            if (input.value != document.getElementById('password').value) input.setCustomValidity('Passwords must be matching.');
+                                            else input.setCustomValidity('');
+                                        }
+                                    </script>
+                                </div>
+                                <div>
+                                    <button class="btn login-btn text-center" name="signupBtn" type="submit"
+                                        value="{{redirectTo}}">Sign Up!</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card col-6">
+                    <div style="margin: auto">
+                        <div class="card-body body-background text-left">
+                            <h2 class="card-title text-center">Login:</h2>
+                            <form action="/login" method="POST">
+                                <label for="loginName">Email or Username</label>
+                                <div style="padding-bottom: 10px;">
+                                    <input type="text" name="loginName" id="loginName" maxlength="50"
+                                        value="{{nlStartingValue}}" required>
+                                </div style="padding-bottom: 10px;">
+                                <label for="loginPassword">Password</label>
+                                <div style="padding-bottom: 10px;">
+                                    <input type="password" minlength="8" name="loginPassword" id="loginPassword"
+                                        required>
+                                </div>
+                                <div>
+                                    <button class="btn login-btn" name="loginBtn" type="submit"
+                                        value="{{redirectTo}}">Login!</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{#if modal}}
+</div></div>{{/if}}

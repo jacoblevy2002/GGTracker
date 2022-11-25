@@ -1,0 +1,29 @@
+<div id="addGameToUserModal-{{game.id}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add {{game.name}} to user</h4>
+                <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+            </div>
+            <form action="/users/games" method="POST">
+                <div class="modal-body">
+                    <div class="form-check">
+                        <label class="form-check-label" for="flexCheckDefault">Liked game?</label>
+                        <input class="form-check-input" name="liked" type="checkbox" value="true" id="flexCheckDefault" />
+                    </div>
+                    <label for="hours">Time:</label>
+                    <input class="form-control footerElm" type="number" id="hours" name="hours" min="0" value="0"
+                        required>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-primary modal-close"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-main footerElm" value="{{game.id}}" name="addGameID"
+                        id="addGameID">Add</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

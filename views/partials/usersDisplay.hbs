@@ -1,0 +1,17 @@
+{{! Adapted from gamesDisplay.hbs - only shown to admins, so the same layout can be reused }}
+<div class="row row-cols-auto cardsContainer">
+        {{#each users}}
+        <div class="col">
+            <div class="card game-card">
+                <div class="card-body">
+                    <h3 class="card-title">{{Username}}</h3>
+                    <p class="card-text">{{Email}}</p>
+                </div>
+                <div class="text-center d-flex justify-content-center card-buttons">
+                    <button id="promoteBtn-{{Username}}" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#promote-{{Username}}">{{#if IsAdmin}}Demote{{else}}Promote{{/if}}</button>
+                    <button id="deleteBtn-{{Username}}" data-bs-target="#delete-{{Username}}" data-bs-toggle="modal" class="btn btn-danger btn-primary">Ban</button>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>

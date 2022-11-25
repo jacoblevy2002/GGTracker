@@ -1,0 +1,114 @@
+<div class="container-fluid">
+    <div id="singleGameContainer">
+        <div id="gameHeader">
+            <h2>{{user.Username}}</h2>
+        </div>
+        <div id="gameBody">
+            <div id="gameDescription">
+                <div id="gameTitle">
+                    <h3>{{user.Username}}</h3>
+                </div>
+                <h4>Bio</h4>
+                <p>{{user.Bio}}</p>
+            </div>
+        </div>
+        <div id="gameFooter">
+            {{#if partials.userContext.loggedIn}}
+            {{#ifEquals user.Username partials.userContext.user.Username}}
+            <div id="leftFooter">
+                <fieldset id="userFooter" class="border p-2">
+                    <legend class="w-auto footerLegend footerControlDiv">User Controls</legend>
+                    <button class="btn btn-warning footerElm" data-bs-toggle="modal" data-bs-target="#editUserModal">Edit
+                        Account</button>
+                    <button class="btn btn-main footerElm" data-bs-toggle="modal"
+                        data-bs-target="#deleteUserModal">Delete Account</button>
+                </fieldset>
+            </div>
+            {{/ifEquals}}
+            {{/if}}
+            {{#if partials.userContext.user.IsAdmin}}
+            <div id="rightFooter">
+                <fieldset id="adminFooter" class="border p-2 footerControlDiv">
+                    <legend class="w-auto footerLegend">Admin Controls</legend>
+
+                    <button class="btn btn-main footerElm" data-bs-toggle="modal" id="#promoteUserModalButton"
+                        data-bs-target="#promoteUserModal">{{#if user.IsAdmin}}Demote{{else}}Promote{{/if}}</button>
+                    <button class="btn btn-main footerElm" data-bs-toggle="modal" id="#deleteUserModalButton"
+                        data-bs-target="#deleteUserModal">Ban user</button>
+                </fieldset>
+            </div>
+            {{/if}}
+        </div>
+    </div>
+
+</div>
+
+<!--delete user modal-->
+<div id="deleteUserModal" class="modal fade" role="dialog">
+    <div class="modal-dialog purple-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{#ifEquals user.Username
+                    partials.userContext.user.Username}}Delete{{else}}Ban{{/ifEquals}}.</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you would like to {{#ifEquals user.Username partials.userContext.user.Username}}delete
+                    your account{{else}}ban this user{{/ifEquals}}? <b>THIS ACTION CANNOT BE REVERSED.</b></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btn-primary modal-close"
+                    data-bs-dismiss="modal">Close</button>
+                <form action="/user/delete" method="post">
+                    <button value="true" name="confirmDelete" type="submit"
+                        class="btn btn-default btn-danger modal-delete delete-confirm"
+                        id="deleteModal-{{user.Username}}">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- edit user modal -->
+<div id="editUserModal" class="modal fade" role="dialog">
+    <div class="modal-dialog add-dialog purple-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Account</h4>
+            </div>
+            <form id="addGameForm" action="/user/edit" method="post">
+                <input type="hidden" name="oldName" value="{{user.Username}}" />
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Username</label>
+                        <input type="text" name="name" maxlength="20" class="form-control" id="name-change" value="{{user.Username}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" maxlength="50" class="form-control" id="email-change" value="{{user.Email}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="bio" class="form-label">Bio</label>
+                        <textarea name="bio" maxlength="100" class="form-control" id="bio-change">{{user.Bio}}</textarea>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label" for="flexCheckDefault">Public profile?</label>
+                        <input class="form-check-input" name="public" type="checkbox" value="true" id="flexCheckDefault" {{#if user.IsPublic}}checked="checked"{{/if}}/>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default btn-primary modal-close"
+                        data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" id="edit-user-submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {{#if partials.userContext.user.IsAdmin}}
+    {{>userAdminModals user}}
+    {{/if}}
+</div>

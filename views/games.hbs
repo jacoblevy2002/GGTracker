@@ -1,0 +1,71 @@
+<div id="mainSection">
+
+    <div id="search">
+        <div id="search-container">
+            <div id="genre-container">
+                <h4>Search by genre</h4>
+                <form class="form" action="/games/genres/" method="GET" id="getGenreForm">
+
+                    <label for="genreSearch">Game Genre</label>
+                    <div class="input-group mb-3" id="genreSearch">
+                        <select class="form-select" form="getGenreForm" id="genre-select" name="id"
+                            aria-label="Genre selection">
+                            {{#each genres}}
+                            <option value="{{this.id}}" {{#ifEquals ../selectedGenre this.id}}selected{{/ifEquals}}>
+                                {{this.name}} </option>
+                            {{/each}}
+                        </select>
+
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary searchbarButton" id="submit-genre-button"
+                                type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="name-container">
+                <h4>Search by name</h4>
+                <form class="form" action="/games/name/" method="GET" id="getNameForm">
+
+                    <label for="nameSearch">Game Name</label>
+                    <div class="input-group mb-3" id="nameSearch">
+                        <input type="text" class="form-control" placeholder="Game Name" id="game-search-text"
+                            aria-label="Game Name" name="name">
+
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-primary searchbarButton" id="submit-search-button-text"
+                                type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="buttonContainer">
+                <form action="/games">
+                    <button class="btn btn-primary mainButtons" type="submit" id="clear-btn" href="/games">Clear
+                        search</button>
+                </form>
+
+            </div>
+            {{#if partials.userContext.user.IsAdmin}}
+            <h5>Admin controls</h3>
+
+                <div class="buttonContainer">
+
+                    <button class="btn btn-primary mainButtons" type="button" id="addNewGame" data-bs-toggle="modal"
+                        data-bs-target="#addGameModal">
+                        Add new Game
+                    </button>
+                </div>
+                {{/if}}
+
+
+        </div>
+    </div>
+    {{> gamesDisplay}}
+
+    <!-- LOGIN MODAL -->
+    {{> loginModal modal=true redirectTo="games"}}
+
+    <!-- Collection modals -->
+    {{> userModifyGameModals games=games}}
+</div>

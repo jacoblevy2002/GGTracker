@@ -1,0 +1,45 @@
+<div class="row row-cols-auto cardsContainer">
+        {{#each games}}
+        <div class="col">
+            <div class="card game-card" href="/games/id?id={{this.id}}">
+                <div class="card-body">
+                    <h3 class="card-title">{{this.name}}</h3>
+                    <p class="card-text">{{this.description}}.</p>
+                </div>
+                <div class="text-center d-flex justify-content-center card-buttons">
+
+                    <form action="/games/id" method="get">
+                        <button name="id" value="{{this.id}}" type="submit"
+                            class="btn btn-default btn-primary genres modal-view-genre">View game</button>
+                    </form>
+                    {{#if ../partials.userContext.loggedIn}}
+                    {{#if this.canAddGame}}
+                    <button type="button" class="btn btn-main" data-bs-toggle="modal"
+                        data-bs-target="#addGameToUserModal-{{this.id}}">Add</button>
+                    {{else}}
+                    <button type="button" class="btn btn-main" data-bs-toggle="modal" data-bs-target="#removeGameModal-{{this.id}}">Remove</button>
+                    {{/if}}
+                    {{else}}
+                    <button type="button" class="btn btn-main" data-bs-toggle="modal" data-bs-target="#loginModal">Add</button>
+                    {{/if}}
+                    <!-- REMOVED FOR NOW -->
+                    <!-- 
+                    <button class="btn btn-primary btn-sm float-left modal-edit" data-bs-toggle="modal"
+                        id="editBtn-{{this.id}}" data-bs-target="#edit-{{this.id}}">
+                        Edit
+                    </button>
+
+                    <form action="/games/id" method="get">
+                        <button name="id" value="{{this.id}}" type="submit"
+                            class="btn btn-default btn-primary genres modal-view-genre">View game</button>
+                    </form>
+                    <button class="btn btn-danger btn-sm float-right modal-delete card-delete" data-bs-toggle="modal"
+                        id="deleteBtn-{{this.id}}" data-bs-target="#delete-{{this.id}}">
+                        Delete
+                    </button>
+                    -->
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>

@@ -1,0 +1,174 @@
+<div class="container-fluid ">
+    {{#if partials.userContext.loggedIn}}
+    <div class="homeContainer">
+
+        <div id="Welcome header">
+            <h1>Welcome, {{partials.userContext.user.Username}}</h1>
+        </div>
+        <div id="homeContent">
+            <div id="SavedGames">
+                <h3>To play:</h3>
+                <div id="SavedGamesList">
+                    {{#each toPlayList}}
+                    <div class="col">
+                        <div class="card game-card" href="/games/id?id={{this.game.id}}">
+                            <div class="card-body">
+                                <h3 class="card-title">{{this.game.name}}</h3>
+                                <p class="card-text">{{this.game.description}}.</p>
+                            </div>
+                            <div class="text-center d-flex justify-content-center card-buttons">
+
+                                <form action="/games/id" method="get">
+                                    <button name="id" value="{{this.game.id}}" type="submit"
+                                        class="btn btn-default btn-primary genres modal-view-genre">View game</button>
+                                </form>
+                                <form action="/reccomendations/delete" method="post">
+                                    <input type="hidden" name="gameID" value="{{this.game.id}}">
+                                    <button type="submit" class="btn btn-main">Delete</button>
+                                </form>
+                                <!-- REMOVED FOR NOW -->
+                                <!-- 
+                    <button class="btn btn-primary btn-sm float-left modal-edit" data-bs-toggle="modal"
+                        id="editBtn-{{this.id}}" data-bs-target="#edit-{{this.id}}">
+                        Edit
+                    </button>
+
+                    <form action="/games/id" method="get">
+                        <button name="id" value="{{this.id}}" type="submit"
+                            class="btn btn-default btn-primary genres modal-view-genre">View game</button>
+                    </form>
+                    <button class="btn btn-danger btn-sm float-right modal-delete card-delete" data-bs-toggle="modal"
+                        id="deleteBtn-{{this.id}}" data-bs-target="#delete-{{this.id}}">
+                        Delete
+                    </button>
+                    -->
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            <div id="ReccContain">
+                {{#if hasRec}}
+                <div id="Reccomend">
+                    <h3>Why not try:</h3>
+                    <div id="Reccomendation">
+                        <div id="singleGameContainer">
+
+                            <div id="gameBody">
+
+                                <div id="gameDescription">
+                                    <div id="gameTitle">
+                                        <h3>{{rec.game.name}}</h3>
+                                    </div>
+                                    <h4>Description</h4>
+                                    <p>{{rec.game.description}}</p>
+                                </div>
+                                <div id="gameGenres">
+                                    <div id="gameTitle">
+                                        <h3>Game genres</h3>
+                                    </div>
+                                    {{#each rec.game.genres}}
+                                    <div class="chip">
+                                        <a href="/games/genres/?id={{this.id}}">
+                                            {{this.name}}
+                                        </a>
+
+                                    </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            <div id="gameFooter">
+
+                                <div id="leftFooter">
+                                    <form action="/reccomendations/add" method="POST">
+                                        <!--<input type="hidden" name="username" value="{{partials.userContext.user.Username}}"> -->
+                                        <input type="hidden" name="gameID" value="{{rec.game.id}}" />
+                                        <button class="btn btn-main footerElm" type="submit">Try later</button>
+                                    </form>
+                                    <form action="/reccomendations/dismiss" method="POST">
+                                        <!--<input type="hidden" name="username" value="{{partials.userContext.user.Username}}"> -->
+                                        <input type="hidden" name="gameID" value="{{rec.game.id}}" />
+                                        <button class="btn btn-main footerElm" type="submit">Not Interested</button>
+                                    </form>
+
+
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                <div id="Reccomend">
+                    <h3>Why not try:</h3>
+
+                    <div id="Reccomendation">
+                        <div id="noReccContainer">
+
+                            <h3>No reccomendations.. Wait for some new games to be added to GGTracker!</h3>
+                        </div>
+                    </div>
+
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+
+    {{else}}
+    <div id="Landing">
+        <div id="Hero">
+            <div id="HeroImg"></div>
+            <div id="HeroText">
+                <h1>Welcome to GGTracker</h1>
+                <h3> A game tracking and reccomendation system for a cross platform era </h3>
+            </div>
+        </div>
+        <div id="mainLanding">
+            <div class="textContainer">
+                <h1>Our mission</h1>
+                <p>
+                    Nowadays, with console exclusives, a new console coming out every few years, and games split across
+                    countless platforms, it can be hard to keep track of it all, find what games you'd want to play, and
+                    even harder to share what you like with your friends.
+                </p>
+            </div>
+            <h2>...Why should it be?</h2>
+            <div id="cards">
+                <div class="card">
+                    <div class="card-header">
+                        Keep track of your games
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">With GGTracker you can easily keep track of all the games youve played,
+                            and access them in one nice place</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Find your next favorite thing
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Based off the games listed, hours, and if you even liked them, we can
+                            accurately predict what you might like next, and give you a curated stream of games just for
+                            you!</h5>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        Share with your friends
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Using GGTracker, you can set a public profile, and show your friends your history of gaming!</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{/if}}
+</div>
