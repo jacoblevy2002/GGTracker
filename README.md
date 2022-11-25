@@ -2,6 +2,8 @@
  
 **GGTracker** is a game collection tracking website, designed and created by me, Rea Koehler, and Nathan Batten as a final project for a Web Programming class. The website is set up to run in tandem with a Docker container, where the database for users, games, and more is stored. The Docker container is defined below.
 
+This website was created in May 2021.
+
 ## Dependencies
 
 ### Docker Container
